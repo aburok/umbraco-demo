@@ -1,0 +1,26 @@
+﻿@using UmbracoTest.Controllers
+@using UmbracoTest.Helpers
+@inherits UmbracoViewPage<UmbracoTest.ViewModels.MemberRegisterModel>
+
+@{
+    ViewBag.Title = "Membership Registration After Refactoring";
+}
+
+<h2>Membership Registration</h2>
+
+@using (Html.BeginUmbracoForm<MembershipController>(
+                "MemberRegister",
+                FormMethod.Post,
+                new { @class = "validate-form" }))
+{
+    <fieldset>
+        @Html.FormFieldFor(m=>m.GivenNames, Shared.RenderFormFieldHelper)
+
+        @Html.FormFieldFor(m=>m.FamilyNames, Shared.RenderFormFieldHelper)
+
+        @Html.FormFieldFor(m=>m.EmailAddress, Shared.RenderFormFieldHelper)
+
+        @Html.FormFieldFor(m=>m.EmailAddressConfirmation, Shared.RenderFormFieldHelper)
+    </fieldset>
+}
+

@@ -1,0 +1,51 @@
+﻿@using UmbracoTest.Controllers
+@inherits UmbracoViewPage<UmbracoTest.ViewModels.MemberRegisterModel>
+
+@{
+    ViewBag.Title = "Membership Registration Before refactor";
+}
+
+<h2>Membership Registration</h2>
+
+@using (Html.BeginUmbracoForm<MembershipController>(
+    "MemberRegister",
+    FormMethod.Post,
+    new { @class = "validate-form" }))
+{
+    <fieldset class="form-group">
+        <label>
+            @Html.DisplayNameFor(m => m.GivenNames) 
+        </label>
+        @Html.EditorFor(m => m.GivenNames, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.GivenNames,
+                string.Empty, new { @class = "error" })
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>
+            @Html.DisplayNameFor(m => m.FamilyNames) <sup>*</sup>
+        </label>
+        @Html.EditorFor(m => m.FamilyNames, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.FamilyNames,
+            string.Empty, new { @class = "error" })
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>
+            @Html.DisplayNameFor(m => m.EmailAddress) <sup>*</sup>
+        </label>
+        @Html.EditorFor(m => m.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.EmailAddress,
+            string.Empty, new { @class = "error" })
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>
+            @Html.DisplayNameFor(m => m.EmailAddressConfirmation) <sup>*</sup>
+        </label>
+        @Html.EditorFor(m => m.EmailAddressConfirmation, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.EmailAddressConfirmation,
+            string.Empty, new { @class = "error" })
+    </fieldset>
+}
+

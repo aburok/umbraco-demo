@@ -1,0 +1,13 @@
+﻿@using UmbracoTest.ViewModels
+@inherits UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+<div class="container">
+    @Html.Partial("Membership/MembershipRegistration", new MemberRegisterModel())
+</div>
+
+<div class="container">
+    @Html.Partial("Membership/MembershipRefactoredRegistration", new MemberRegisterModel())
+</div>
