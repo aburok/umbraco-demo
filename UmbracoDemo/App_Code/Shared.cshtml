@@ -1,0 +1,19 @@
+﻿@using System.Web.Mvc.Html
+
+@helper RenderFormFieldHelper(
+    System.Web.Mvc.HtmlHelper htmlHelper,
+    string fieldName,
+    bool isRequired)
+{
+    <fieldset class="form-group">
+        <label>
+            @htmlHelper.DisplayName(fieldName)
+            @if (isRequired)
+            {
+                <sup>*</sup>
+            }
+        </label>
+        @htmlHelper.Editor(fieldName, new { htmlAttributes = new { @class = "form-control" } })
+        @htmlHelper.ValidationMessage(fieldName, string.Empty, new { @class = "error" })
+    </fieldset>
+}

@@ -356,6 +356,7 @@
     <Content Include="Views\Partials\Membership\MembershipRegistration.cshtml" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\RegisterUserFormExample.cshtml" />
+    <Content Include="App_Code\Shared.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
