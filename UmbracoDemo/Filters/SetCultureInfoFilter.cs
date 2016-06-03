@@ -1,9 +1,9 @@
 using System.Globalization;
 using System.Threading;
 using System.Web.Mvc;
-using Application.BusinessLogic.Services;
+using UmbracoDemo.Services;
 
-namespace Application.Web.Controllers
+namespace UmbracoDemo.Filters
 {
     public class SetCultureInfoFilter : ActionFilterAttribute
     {

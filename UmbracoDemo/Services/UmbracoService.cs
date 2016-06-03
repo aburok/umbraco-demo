@@ -1,17 +1,11 @@
-using System;
-using OneCms.BusinessLogic.Services;
-using umbraco.cms.businesslogic.web;
+using System.Linq;
+using System.Web;
+using Umbraco.Core.Models;
 using Umbraco.Core.Services;
+using Umbraco.Web;
 
-namespace Application.BusinessLogic.Services
+namespace UmbracoDemo.Services
 {
-    using System.Linq;
-    using System.Web;
-    using Constants;
-    using OneCms.BusinessLogic;
-    using Umbraco.Core.Models;
-    using Umbraco.Web;
-
     public interface IUmbracoService
     {
         string GetCultureCode();
