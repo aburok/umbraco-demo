@@ -359,7 +359,6 @@
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
     <Content Include="Views\Partials\RegisterUser.cshtml" />
-    <Content Include="Views\RegisterUserTemplate.cshtml" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Config\uSyncBackOffice.Config" />
     <Content Include="Config\uSyncCore.config" />
@@ -368,6 +367,7 @@
     <Content Include="Views\Partials\MainNavigation.cshtml" />
     <Content Include="Content\Styles\demo-styles.less" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\FormWithRemoteValidation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
