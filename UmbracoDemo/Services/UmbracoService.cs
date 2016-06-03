@@ -22,14 +22,15 @@ namespace UmbracoDemo.Services
 
         // TODO : poor man ioc
         public UmbracoService()
-            :this(UmbracoContext.Current.Application.Services.DomainService)
+            : this(UmbracoContext.Current.Application.Services.DomainService)
         { }
+
+        protected HttpRequest Request => HttpContext.Current.Request;
 
         public string GetCultureCode()
         {
             //Get language id from the Root Node ID
-            string requestDomain = HttpContext.Current.Request
-                .ServerVariables["SERVER_NAME"].ToLower();
+            string requestDomain = Request.ServerVariables["SERVER_NAME"].ToLower();
 
             var domain = GetMatchedDomain(requestDomain);
 
@@ -41,6 +42,13 @@ namespace UmbracoDemo.Services
             return "en-US";
         }
 
+        protected string NormalizeUrl(string originalUrl)
+        {
+            return originalUrl
+                .Replace("https://", string.Empty)
+                .Replace("http://", string.Empty);
+        }
+
         /// <summary>
         /// Gets domain object from request. Errors if no domain is found.
         /// </summary>
@@ -48,14 +56,13 @@ namespace UmbracoDemo.Services
         /// <returns></returns>
         public IDomain GetMatchedDomain(string requestDomain)
         {
-            //var domains = HttpRuntime.Cache.Get("UmbracoDomainList") as List<Domain>;
+            var domainList = _domainService
+                .GetAll(true)
+                .ToList();
 
-            //var domains = Domain.GetDomains();
-            var domainList = _domainService.GetAll(true);
-
-            string fullRequest = HttpContext.Current.Request.Url.AbsolutePath.ToLower().Contains("/umbraco/surface")
-                                     ? HttpContext.Current.Request.UrlReferrer.AbsoluteUri.Replace("https://", string.Empty).Replace("http://", string.Empty)
-                                     : requestDomain + HttpContext.Current.Request.Url.AbsolutePath;
+            string fullRequest = Request.Url.AbsolutePath.ToLower().Contains("/umbraco/surface")
+                 ? NormalizeUrl(Request.UrlReferrer.AbsoluteUri)
+                 : requestDomain + Request.Url.AbsolutePath;
 
             // walk backwards on full Request until domain found
             string currentTest = fullRequest;
@@ -84,12 +91,6 @@ namespace UmbracoDemo.Services
                     break;
                 }
             }
-
-            //Umbraco allows domains in this format ch.domain.com/fr
-            //These are used to handle region sites that have sub languages
-            //This final check looks for ch.domain.com just in case the request was something like
-            //ch.domain.com/blah - this will not get found by the explicit match above, so we just find the closest
-            //matching domain and use that instead.
 
             return matchedDomain;
         }

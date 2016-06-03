@@ -1,0 +1,10 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+
+    Html.EnableClientValidation();
+}
+
+<div class="container">
+    @Html.Partial("RegisterUser", new RegisterUserViewModel())
+</div>
