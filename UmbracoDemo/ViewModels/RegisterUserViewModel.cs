@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace UmbracoTest.ViewModels
+namespace UmbracoDemo.ViewModels
 {
     public class RegisterUserViewModel
     {

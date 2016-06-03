@@ -1,10 +1,9 @@
 ﻿using System.Web.Mvc;
 using System.Web.UI;
-using Umbraco.Web;
 using Umbraco.Web.Mvc;
-using UmbracoTest.Validation;
+using UmbracoDemo.Validation;
 
-namespace UmbracoTest.Controllers
+namespace UmbracoDemo.Controllers
 {
     [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
     public class ValidationController : SurfaceController

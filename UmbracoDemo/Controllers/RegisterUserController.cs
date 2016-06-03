@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 using Umbraco.Web.Mvc;
-using UmbracoTest.ViewModels;
+using UmbracoDemo.ViewModels;
 
-namespace UmbracoTest.Controllers
+namespace UmbracoDemo.Controllers
 {
     public class RegisterUserController : SurfaceController
     {
