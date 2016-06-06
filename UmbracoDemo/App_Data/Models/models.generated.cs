@@ -22,16 +22,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Form with remote validation</summary>
-	[PublishedContentModel("formWithRemoteValidation")]
-	public partial class FormWithRemoteValidation : PublishedContentModel
+	/// <summary>Ajax Culture Tester</summary>
+	[PublishedContentModel("ajaxCultureTester")]
+	public partial class AjaxCultureTester : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "formWithRemoteValidation";
+		public new const string ModelTypeAlias = "ajaxCultureTester";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public FormWithRemoteValidation(IPublishedContent content)
+		public AjaxCultureTester(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -42,7 +42,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FormWithRemoteValidation, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AjaxCultureTester, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}

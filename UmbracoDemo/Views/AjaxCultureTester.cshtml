@@ -1,0 +1,58 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+
+    Html.EnableClientValidation();
+}
+<div class="container">
+    <div class="row">
+        <button id="get-messages">Get messages</button>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Standard message, without culture set</h2>
+            <div id="standard-message"></div>
+        </div>
+        <div class="col-md-6">
+            <h2>Message from ajax request with culture set</h2>
+            <div id="message-with-filter"></div>
+        </div>
+    </div>
+</div>
+
+@section FooterScripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var stdMsgElement = $("#standard-message");
+            var msgWithFilterElement = $("#message-with-filter");
+
+            var callAjaxButton = $("#get-messages");
+
+            callAjaxButton.click(function() {
+                callUmbracoAjax("withoutcultureFilter", function(data) {
+                    getMsgCallback(stdMsgElement, data);
+                });
+
+                callUmbracoAjax("withculturefilter", function(data) {
+                    getMsgCallback(msgWithFilterElement, data);
+                });
+            });
+
+            function getMsgCallback(element, text) {
+                element.text(text);
+            }
+
+            function callUmbracoAjax(methodName, callback) {
+                $.ajax({
+                    url: "/umbraco/surface/message/" + methodName,
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: callback
+                });
+            }
+
+        })
+    </script>
+}
