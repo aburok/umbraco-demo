@@ -5,17 +5,30 @@
     Html.EnableClientValidation();
 }
 <div class="container">
-    <div class="row">
-        <button id="get-messages">Get messages</button>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Setting proper language and culture on AJAX request to Umbraco surface controller.</h1>
+            <hr />
+            <p>
+                <button id="get-messages"
+                        class="btn btn-primary btn-lg">
+                    Get messages
+                </button>
+            </p>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <h2>Standard message, without culture set</h2>
-            <div id="standard-message"></div>
+            <div class="jumbotron">
+                <h2>Standard message, without culture set</h2>
+                <h3 id="standard-message"></h3>
+            </div>
         </div>
         <div class="col-md-6">
-            <h2>Message from ajax request with culture set</h2>
-            <div id="message-with-filter"></div>
+            <div class="jumbotron">
+                <h2>Message from ajax request with culture set</h2>
+                <h3 id="message-with-filter"></h3>
+            </div>
         </div>
     </div>
 </div>
@@ -29,12 +42,12 @@
 
             var callAjaxButton = $("#get-messages");
 
-            callAjaxButton.click(function() {
-                callUmbracoAjax("withoutcultureFilter", function(data) {
+            callAjaxButton.click(function () {
+                callUmbracoAjax("withoutcultureFilter", function (data) {
                     getMsgCallback(stdMsgElement, data);
                 });
 
-                callUmbracoAjax("withculturefilter", function(data) {
+                callUmbracoAjax("withculturefilter", function (data) {
                     getMsgCallback(msgWithFilterElement, data);
                 });
             });
