@@ -257,11 +257,11 @@ ModelManifest.xml
 
 # Ignore Umbraco content cache file
 **/App_Data/umbraco.config
+**/App_Data/[Uu]mbraco.sdf
 
 # Don't ignore Umbraco packages (VisualStudio.gitignore mistakes this for a NuGet packages folder)
 # Make sure to include details from VisualStudio.gitignore BEFORE this
 !**/App_Data/[Pp]ackages/
-!**/App_Data/[Uu]mbraco.sdf
 !**/[Uu]mbraco/[Dd]eveloper/[Pp]ackages
 
 # ImageProcessor DiskCache
