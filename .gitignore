@@ -270,3 +270,4 @@ ModelManifest.xml
 
 tools/nuget.exe
 tools/Cake/*
+tools/Addins
