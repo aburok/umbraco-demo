@@ -263,6 +263,7 @@ ModelManifest.xml
 # Make sure to include details from VisualStudio.gitignore BEFORE this
 !**/App_Data/[Pp]ackages/
 !**/[Uu]mbraco/[Dd]eveloper/[Pp]ackages
+!**/App_Data/[Uu]mbraco_Empty_Base.sdf
 
 # ImageProcessor DiskCache
 **/App_Data/[Cc]ache/
