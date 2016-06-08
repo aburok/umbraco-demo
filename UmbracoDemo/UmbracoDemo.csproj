@@ -110,6 +110,17 @@
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Jumoo.uSync.BackOffice, Version=3.1.4.740, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.3.1.4.740\lib\net45\Jumoo.uSync.BackOffice.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Jumoo.uSync.Content, Version=3.1.2.740, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.ContentEdition.3.1.2.740\lib\net45\Jumoo.uSync.Content.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Jumoo.uSync.Core">
+      <HintPath>..\packages\uSync.Core.5.3.5.740\lib\net45\Jumoo.uSync.Core.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\log4net.dll</HintPath>
       <Private>True</Private>
@@ -367,13 +378,13 @@
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
     <Content Include="Views\Master.cshtml" />
-    <Content Include="Config\uSyncBackOffice.Config" />
     <Content Include="Config\uSyncCore.config" />
-    <Content Include="App_Plugins\uSync\package.manifest" />
     <Content Include="Views\Partials\BottomNavigation.cshtml" />
     <Content Include="Views\Partials\MainNavigation.cshtml" />
     <Content Include="Content\Styles\demo-styles.less" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Config\uSyncBackOffice.Config" />
+    <Content Include="App_Plugins\uSync\package.manifest" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
