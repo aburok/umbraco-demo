@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Castle.Core.Smtp;
+using Umbraco.Core.Services;
 using Umbraco.Web.Mvc;
 using UmbracoDemo.Services;
 
@@ -7,18 +7,23 @@ namespace UmbracoDemo.Controllers
 {
     public class ExampleController : SurfaceController
     {
-        private readonly IEmailService _emailService;
+        private readonly IContentService _contentService;
+        private readonly ICityRepository _cityRepository;
 
-        public ExampleController(IEmailService emailService)
+        public ExampleController(IContentService contentService,
+            ICityRepository cityRepository)
         {
-            _emailService = emailService;
+            _contentService = contentService;
+            _cityRepository = cityRepository;
         }
 
         // GET: Example
         public ActionResult Index()
         {
-            _emailService.SendEmail("test@test.test", "test.test@test.test", "Test email", "Testing test email.");
-            return View();
+            var rootContent = _contentService.GetRootContent();
+            ViewBag.Cities = _cityRepository.GetCities();
+
+            return View(rootContent);
         }
     }
 }

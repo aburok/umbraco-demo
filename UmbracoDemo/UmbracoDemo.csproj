@@ -385,6 +385,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Config\uSyncBackOffice.Config" />
     <Content Include="App_Plugins\uSync\package.manifest" />
+    <Content Include="Views\Example\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -400,7 +401,9 @@
     <Compile Include="DemoApplication.cs" />
     <Compile Include="DependencyInjection\WindsorDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CityRepository.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\ICityRepository.cs" />
     <Compile Include="Services\IEmailService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -410,7 +413,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
-    <Folder Include="Views\Example\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\Scripts\demo.scripts.ts" />

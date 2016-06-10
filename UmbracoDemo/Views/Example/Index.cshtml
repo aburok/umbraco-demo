@@ -1,0 +1,17 @@
+﻿@model IEnumerable<IContent>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Master.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<ul>
+    @foreach (var content in Model)
+    {
+        <li>
+            @content.Name
+        </li>
+    }
+</ul>
