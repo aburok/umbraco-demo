@@ -3,7 +3,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using Castle.Windsor.Installer;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using UmbracoDemo.DependencyInjection;
@@ -20,7 +19,10 @@ namespace UmbracoDemo
         {
             base.OnApplicationStarted(sender, e);
 
-            var resolver = new WindsorDependencyResolver(_container.Value, DependencyResolver.Current);
+            var resolver = new WindsorDependencyResolver(
+                _container.Value, 
+                DependencyResolver.Current, 
+                GlobalConfiguration.Configuration.DependencyResolver);
             DependencyResolver.SetResolver(resolver);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
         }
