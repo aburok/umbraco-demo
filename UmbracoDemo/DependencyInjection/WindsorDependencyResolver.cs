@@ -5,7 +5,7 @@ using Castle.Windsor;
 
 namespace UmbracoDemo.DependencyInjection
 {
-    internal class WindsorDependencyResolver :
+    public class WindsorDependencyResolver :
         System.Web.Mvc.IDependencyResolver,
         System.Web.Http.Dependencies.IDependencyResolver
     {

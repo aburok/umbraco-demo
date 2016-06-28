@@ -47,7 +47,14 @@ namespace UmbracoDemo.DependencyInjection
             }
             catch (Exception) { /* ignored */ }
 
-            return _windsorContainer.Resolve(serviceType);
+            try
+            {
+                var windsorWebApiService = _windsorContainer.Resolve(serviceType);
+                if (windsorWebApiService != null)
+                    return windsorWebApiService;
+            }
+            catch (Exception) { /* ignored */ }
+            return null;
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
@@ -69,7 +76,7 @@ namespace UmbracoDemo.DependencyInjection
             catch (Exception) { /* ignored */ }
 
             try
-            { 
+            {
                 return _windsorContainer.ResolveAll(serviceType).Cast<object>();
             }
             catch (Exception) { /* ignored */ }
