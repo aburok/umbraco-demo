@@ -33,27 +33,28 @@ namespace UmbracoDemo.DependencyInjection
         {
             try
             {
-                var currentService = _mvcDependencyResolver.GetService(serviceType);
-                if (currentService != null)
-                    return currentService;
+                var serviceFromWindsor = _windsorContainer.Resolve(serviceType);
+                if (serviceFromWindsor != null)
+                    return serviceFromWindsor;
+            }
+            catch (Exception) { /* ignored */ }
+
+            try
+            {
+                var serviceFromMvc = _mvcDependencyResolver.GetService(serviceType);
+                if (serviceFromMvc != null)
+                    return serviceFromMvc;
             }
             catch (Exception) { /*ignored*/ }
 
             try
             {
-                var webApiService = _webApiDependencyResolver.GetService(serviceType);
-                if (webApiService != null)
-                    return webApiService;
+                var serviceFromWebApi = _webApiDependencyResolver.GetService(serviceType);
+                if (serviceFromWebApi != null)
+                    return serviceFromWebApi;
             }
             catch (Exception) { /* ignored */ }
 
-            try
-            {
-                var windsorWebApiService = _windsorContainer.Resolve(serviceType);
-                if (windsorWebApiService != null)
-                    return windsorWebApiService;
-            }
-            catch (Exception) { /* ignored */ }
             return null;
         }
 
@@ -61,8 +62,17 @@ namespace UmbracoDemo.DependencyInjection
         {
             try
             {
+                var servicesFromWindsor = _windsorContainer.ResolveAll(serviceType)
+                    .Cast<object>();
+                if (servicesFromWindsor != null && servicesFromWindsor.Any())
+                    return servicesFromWindsor;
+            }
+            catch (Exception) { /* ignored */ }
+
+            try
+            {
                 var currentServiceList = _mvcDependencyResolver.GetServices(serviceType);
-                if (currentServiceList != null)
+                if (currentServiceList != null && currentServiceList.Any())
                     return currentServiceList;
             }
             catch (Exception) { /* ignored */ }
@@ -70,16 +80,11 @@ namespace UmbracoDemo.DependencyInjection
             try
             {
                 var webApiServices = _webApiDependencyResolver.GetServices(serviceType);
-                if (webApiServices != null)
+                if (webApiServices != null && webApiServices.Any())
                     return webApiServices;
             }
             catch (Exception) { /* ignored */ }
 
-            try
-            {
-                return _windsorContainer.ResolveAll(serviceType).Cast<object>();
-            }
-            catch (Exception) { /* ignored */ }
 
             return Enumerable.Empty<object>();
         }

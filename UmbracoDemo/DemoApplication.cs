@@ -48,11 +48,6 @@ namespace UmbracoDemo
 
         private static void RegisterStandardClasses(WindsorContainer container)
         {
-            // Register ApiControllers and Mvc Controllers from Umbraco assembly
-            // This is required for Umbraco backoffice
-            RegisterFromAssembly<UmbracoApplication, ApiController>(container);
-            RegisterFromAssembly<UmbracoApplication, Controller>(container);
-
             // Register all controllers from current assembly 
             RegisterFromAssembly<DemoApplication, ApiController>(container);
             RegisterFromAssembly<DemoApplication, Controller>(container);

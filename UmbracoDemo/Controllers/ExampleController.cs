@@ -10,7 +10,8 @@ namespace UmbracoDemo.Controllers
         private readonly IContentService _contentService;
         private readonly ICityRepository _cityRepository;
 
-        public ExampleController(IContentService contentService,
+        public ExampleController(
+            IContentService contentService,
             ICityRepository cityRepository)
         {
             _contentService = contentService;
