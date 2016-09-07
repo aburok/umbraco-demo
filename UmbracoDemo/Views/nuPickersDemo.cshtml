@@ -1,0 +1,85 @@
+﻿@using nuPickers
+@using UmbracoDemo.Controllers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+
+@{
+    var pickedCountries = Model.Content
+        .GetPropertyValue<Picker>("countrySelectorJSON")
+        .PickedKeys
+        .ToList();
+
+    var countryList = CountryController.GetCountryList();
+
+    var selectedCountries = countryList
+        .Where(c => pickedCountries.Contains(c.TwoLetterIsoCode))
+        .OrderBy(c => c.EnglishName)
+        .ToList();
+}
+
+<div>
+    <h1>nuPickers Typeahead data type using Json as Data Source</h1>
+
+    <div class="row">
+        @foreach (var country in selectedCountries.Select((value, index) => new { index = index + 1, value }))
+        {
+            var body = RenderCountry(country.value);
+
+            @RenderCollection(body, country.index);
+        }
+    </div>
+</div>
+
+
+@{
+    var pickedCountryDropDown = Model.Content
+        .GetPropertyValue<Picker>("countryDropdowJSON")
+        .PickedKeys
+        .FirstOrDefault();
+
+    var selectedCountry = countryList
+        .FirstOrDefault(c => c.TwoLetterIsoCode == pickedCountryDropDown);
+}
+<div>
+    <h1>nuPicker Dropdown</h1>
+    <div class="row">
+        @RenderCountry(selectedCountry)
+    </div>
+</div>
+
+@helper RenderCountry(CountryInfo country)
+{
+var name = country.EnglishName;
+
+    <img src="http://www.free-country-flags.com/countries/@name/1/small/@(name).png"
+         alt="@name">
+    <h3>
+        @name
+    </h3>
+    <p>
+        @(country.NativeName) [@(country.TwoLetterIsoCode)]
+    </p>
+}
+
+@helper RenderCollection(HelperResult body, int index, int xsCol = 6, int mdCol = 3, int smCol = 2, int lgCol = 2)
+{
+    <div class="col-xs-@xsCol col-md-@mdCol col-lg-@lgCol col-sm-@smCol bit">
+        @(Html.Raw(body.ToHtmlString()))
+    </div>
+
+if (index % 2 == 0)
+{
+        <div class="clearfix visible-xs-block"></div>
+}
+if (index % 4 == 0)
+{
+        <div class="clearfix visible-sm-block"></div>
+}
+if (index % 6 == 0)
+{
+        <div class="clearfix visible-md-block"></div>
+        <div class="clearfix visible-lg-block"></div>
+}
+}

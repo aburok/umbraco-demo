@@ -22,7 +22,14 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/Content/Styles/demo-styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+          crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,45 +40,49 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-8 col-sm-12 col-md-4">
-                    <a href="@home.Url">
-                        <div class="brand" style="background-image:url('@(home.SiteLogo)?height=65&width=205&bgcolor=000')"></div>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-8">
-                    <nav>
+    <div class="container">
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8 col-sm-12 col-md-4">
+                        <a href="@home.Url">
+                            <div class="brand" style="background-image:url('@(home.SiteLogo)?height=65&width=205&bgcolor=000')"></div>
+                        </a>
+                    </div>
+                    <div class="col-sm-12 col-md-8">
+                        <nav>
 
-                        @{ Html.RenderPartial("MainNavigation"); }
+                            @{ Html.RenderPartial("MainNavigation"); }
 
-                    </nav>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="toggle" class="toggle">
-            <a href="#" class="cross"><span></span></a>
-        </div>
-    </header>
-
-    @RenderBody()
-
-    <footer class="field dark">
-        <div class="container">
-            <div class="row">
-
-                @{ Html.RenderPartial("BottomNavigation"); }
-
+            <div id="toggle" class="toggle">
+                <a href="#" class="cross"><span></span></a>
             </div>
-        </div>
-    </footer>
+        </header>
+
+        @RenderBody()
+
+        <footer class="field dark">
+            <div class="container">
+                <div class="row">
+
+                @*    @{ Html.RenderPartial("BottomNavigation"); }*@
+
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <!-- Javascripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/scripts/fanoe.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.js"></script>

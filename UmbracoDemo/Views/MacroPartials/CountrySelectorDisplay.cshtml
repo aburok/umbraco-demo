@@ -1,0 +1,14 @@
+﻿@using UmbracoDemo.Controllers
+@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+    var key = Model.MacroParameters["key"] as string;
+    CountryInfo country = CountryController.GetCountryList().FirstOrDefault(c => c.TwoLetterIsoCode == key);
+
+    if (country == null) { return; }
+}
+
+<img src="http://www.free-country-flags.com/countries/@(country.EnglishName)/1/small/@(country.EnglishName).png"
+     alt="@(country.EnglishName)">
+<span>
+    @(country.EnglishName) - @(country.NativeName) [@(country.TwoLetterIsoCode)]
+</span>
